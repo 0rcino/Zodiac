@@ -1,104 +1,55 @@
-// Zodiac Sign and Birth Months and days and year
+
 #include <iostream>
 using namespace std;
 
-int main()
+// use string and fucntion
+string getZodiacsSigns(int months, int days) // use int for whole number
 {
-    int year, month, day;
+    // Define the start and end dates of each zodiac sign
+    int zodiacStartsDates[12] = {21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22};
+    string zodiacsSigns /*use string to storing text*/[12] = {"Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"};
 
-    cout << "Enter your birth year: ";
-    cin >> year;
+    // use if to Check the birth date is valid or true
+    if (months < 1 || months > 12 || days < 1 || days > 31)
+    {
+        return "Invalid date";
+    }
+
+    if (days < zodiacStartsDates[months - 1]) // use if a condition is true
+    {
+        return zodiacsSigns[(months + 10) % 12];
+    }
+    else // use else a condition is false
+    {
+        return zodiacsSigns[months - 1];
+    }
+}
+
+// use string and function
+string getChinesesZodiacSigns(int years)
+{
+    // Define the cycle of the Chinese zodiac signs
+    string chinesesZodiacsSigns /*use string to storing text*/[12] = {"Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep"};
+
+    if (years < 12) // use if to declare a condition is true
+    {
+        return "Invalid year";
+    }
+    return chinesesZodiacsSigns[years % 12];
+}
+
+int main() // main of the function of code
+{
+
+    int months, days, years;
 
     cout << "Enter your birth month (1-12): ";
-    cin >> month;
-
+    cin >> months;
     cout << "Enter your birth day (1-31): ";
-    cin >> day;
+    cin >> days;
+    cout << "Enter your birth year: ";
+    cin >> years;
 
-    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
-    {
-        cout << "Invalid input. Please try again.\n";
-    }
-
-    string sign;
-
-    switch (month)
-    {
-
-    case 1:
-        if (day <= 19)
-            sign = "Capricorn";
-        else
-            sign = "Aquarius";
-        break;
-    case 2:
-        if (day <= 18)
-            sign = "Aquarius";
-        else
-            sign = "Pisces";
-        break;
-    case 3:
-        if (day <= 20)
-            sign = "Pisces";
-        else
-            sign = "Aries";
-        break;
-    case 4:
-        if (day <= 19)
-            sign = "Aries";
-        else
-            sign = "Taurus";
-        break;
-    case 5:
-        if (day <= 20)
-            sign = "Taurus";
-        else
-            sign = "Gemini";
-        break;
-    case 6:
-        if (day <= 20)
-            sign = "Gemini";
-        else
-            sign = "Cancer";
-        break;
-    case 7:
-        if (day <= 22)
-            sign = "Cancer";
-        else
-            sign = "Leo";
-        break;
-    case 8:
-        if (day <= 22)
-            sign = "Leo";
-        else
-            sign = "Virgo";
-        break;
-    case 9:
-        if (day <= 22)
-            sign = "Virgo";
-        else
-            sign = "Libra";
-        break;
-    case 10:
-        if (day <= 22)
-            sign = "Libra";
-        else
-            sign = "Scorpio";
-        break;
-    case 11:
-        if (day <= 21)
-            sign = "Scorpio";
-        else
-            sign = "Sagittarius";
-        break;
-    case 12:
-        if (day <= 21)
-            sign = "Sagittarius";
-        else
-            sign = "Capricorn";
-        break;
-    default:
-        cout << "Invalid month. Please try again.\n";
-    }
-    cout << "Your zodiac sign is: " << sign << "\n";
+    cout << "Your zodiac sign is: " << getZodiacsSigns /*call the function*/ (months, days) << endl;
+    cout << "Your Chinese zodiac sign is: " << getChinesesZodiacSigns /*call the function*/ (years) << endl;
 }

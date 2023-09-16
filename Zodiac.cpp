@@ -83,7 +83,7 @@ int main() // main of the function of code
     cin >> months;
     cout << "Enter your birth day (1-31): ";
     cin >> days;
-    cout << "Enter your birth year: (2003): ";
+    cout << "Enter your birth year: (1900-2100): ";
     cin >> years;
 
     if (!valid(days, months, years)) // if wrong input declare to invalid date

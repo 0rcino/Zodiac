@@ -32,7 +32,7 @@ string zodiacsSigns(int months, int days)
   }
 }
 
-string chineseZodiac(int years)
+string chineseZodiacs(int years)
 {
 
   string chinesesZodiac[12] = {"Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep"};
@@ -51,7 +51,7 @@ bool leapYears(int years)
 
 bool inValids(int days, int months, int years)
 {
-  if (years < 1900 || years > 2100 || months < 1 || months > 12 || days < 1 || days > 31)
+  if (years < 1900 || years > 2200 || months < 1 || months > 12 || days < 1 || days > 31)
     return false;
 
   int daysAndMonth = 31;
@@ -75,14 +75,16 @@ int main()
 
   do
   {
-    cout << "Zodiac and Chinese Sign";
+    cout << "+-------------------------+\n";
+    cout << "| Zodiac and Chinese Sign |\n";
+    cout << "+-------------------------+";
     cout << endl;
     cout << endl;
     cout << "Enter your birth month (1-12): ";
     cin >> months;
     cout << "Enter your birth day (1-31): ";
     cin >> days;
-    cout << "Enter your birth year: (1900-2100): ";
+    cout << "Enter your birth year: (1900-2200): ";
     cin >> years;
 
     if (!inValids(days, months, years))
@@ -97,7 +99,7 @@ int main()
   } while (!inValids(days, months, years));
 
   cout << "Your zodiac sign is: " << zodiacsSigns(months, days) << endl;
-  cout << "Your Chinese zodiac sign is: " << chineseZodiac(years) << endl;
+  cout << "Your Chinese zodiac sign is: " << chineseZodiacs(years) << endl;
   cin.get();
   cout << endl;
   cout << "To return to Choices, press ENTER . . . ";
